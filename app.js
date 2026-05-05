@@ -4,6 +4,7 @@ const express = require("express");
 const morgan = require("morgan");
 
 const authRoutes = require("./routes/auth");
+const cryptoRoutes = require("./routes/crypto");
 const profileRoutes = require("./routes/profile");
 
 const app = express();
@@ -25,6 +26,7 @@ app.get("/health", (req, res) => {
 });
 
 app.use(authRoutes);
+app.use(cryptoRoutes);
 app.use(profileRoutes);
 
 module.exports = app;
