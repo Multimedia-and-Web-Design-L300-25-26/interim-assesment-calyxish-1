@@ -5,9 +5,39 @@ In this assignment, you will integrate your cloned coinbase frontend with a back
 
 You are required to implement the features using Node.js with MongoDB as the database. Create proper data models (schemas) and structure your project using best practices (models, routes, and controllers). All features must be exposed through RESTful APIs for the frontend to consume.
 
+## Local Development
+
+### Prerequisites
+- Node.js
+- MongoDB (local or Atlas)
+
+### Setup
+1) Install dependencies:
+```
+npm install
+```
+
+2) Create a .env file (copy from .env.example):
+```
+PORT=5000
+MONGODB_URI=mongodb://localhost:27017/interim_assessment
+CORS_ORIGIN=http://localhost:5173
+JWT_SECRET=replace_this_with_a_secret
+```
+
+3) Start the server:
+```
+npm run dev
+```
+
+### Useful Scripts
+- npm run dev: start with nodemon
+- npm start: start with node
+- npm test: run tests
+
 ## 1. Authentication System (JWT-Based)
 
-### Register (GET /register)
+### Register (POST /register)
 
 Create a user account using:
 
@@ -17,7 +47,7 @@ Create a user account using:
 
 Send data to the backend API and ensure it is properly stored in the database. Also handle success and error responses appropriately, returning clear and meaningful feedback based on the outcome of each request.
 
-### Login (GET /login)
+### Login (POST /login)
 
 Authenticate users using email and password, store the returned JWT token securely (preferably using HTTP-only cookies), and redirect the user to the homepage after a successful login.
 
@@ -58,6 +88,28 @@ Create a new cryptocurrency using:
 - 24h Change (percentage change in price over the last 24 hours, e.g. +2.5)
 
 Send data to the backend API and ensure it is properly stored in the database (MongoDB). Also handle success and error responses appropriately, returning clear and meaningful feedback based on the outcome of each request.
+
+## API Summary
+- POST /register
+- POST /login
+- POST /logout
+- GET /profile (protected)
+- GET /crypto
+- GET /crypto/gainers
+- GET /crypto/new
+- POST /crypto
+- GET /health
+
+## Deployment (Render)
+1) Create a new Web Service connected to this repo.
+2) Set build command: npm install
+3) Set start command: npm start
+4) Add environment variables from .env.example.
+5) Update CORS_ORIGIN to your frontend URL.
+
+## Notes
+- If port 5000 is in use on your machine, change PORT in .env.
+- Use MongoDB Atlas if you prefer not to run MongoDB locally.
 
 ---
 
