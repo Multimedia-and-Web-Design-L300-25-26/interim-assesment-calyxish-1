@@ -6,12 +6,13 @@ const {
   listNew,
   createCrypto,
 } = require("../controllers/cryptoController");
+const asyncHandler = require("../utils/asyncHandler");
 
 const router = express.Router();
 
-router.get("/crypto", listAll);
-router.get("/crypto/gainers", listGainers);
-router.get("/crypto/new", listNew);
-router.post("/crypto", createCrypto);
+router.get("/crypto", asyncHandler(listAll));
+router.get("/crypto/gainers", asyncHandler(listGainers));
+router.get("/crypto/new", asyncHandler(listNew));
+router.post("/crypto", asyncHandler(createCrypto));
 
 module.exports = router;

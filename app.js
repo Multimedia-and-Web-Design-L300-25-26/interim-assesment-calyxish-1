@@ -6,6 +6,7 @@ const morgan = require("morgan");
 const authRoutes = require("./routes/auth");
 const cryptoRoutes = require("./routes/crypto");
 const profileRoutes = require("./routes/profile");
+const { errorHandler, notFound } = require("./middleware/errorHandler");
 
 const app = express();
 
@@ -28,5 +29,8 @@ app.get("/health", (req, res) => {
 app.use(authRoutes);
 app.use(cryptoRoutes);
 app.use(profileRoutes);
+
+app.use(notFound);
+app.use(errorHandler);
 
 module.exports = app;
